@@ -1,0 +1,24 @@
+package com.challenge.service.interfaces;
+
+import com.challenge.entity.Challenge;
+import com.challenge.repository.ChallengeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ChallengeService implements ChallengeServiceInterface {
+    @Autowired
+    ChallengeRepository cRepository;
+
+    @Override
+    public List<Challenge> findByAccelerationIdAndUserId(Long accelerationId, Long userId) {
+        return cRepository.findByAccelerationIdAndUserId(accelerationId, userId);
+    }
+
+    @Override
+    public Challenge save(Challenge object) {
+        return cRepository.save(object);
+    }
+}
